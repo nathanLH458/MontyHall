@@ -1,5 +1,6 @@
 # MontyHall
-Monty Hall Problem simulator
+Monty Hall Problem simulator      
+    
 More info on Monty Hall: https://en.wikipedia.org/wiki/Monty_Hall_problem
 
 This code simulates the Monty Hall problem. 
