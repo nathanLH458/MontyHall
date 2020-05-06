@@ -26,32 +26,37 @@ def door_choice_1():
         print('You have chosen door ' + user_choice)
     else:
         print('That door is invalid.')
-        sys.exit('Invalid door...')
+        input('press key to exit')
+        sys.exit(0)
 #Main function, that determines which door to switch to, if the users switches, and ultimately determines if user wins or not. + adjusts the file (to keep score)
 def monty_hall_simulated():
     if user_choice == winner:
         revealed_door = random.choice(door_list_without_winner)
         other_door_in_list = [door for door in door_list_without_winner if door != revealed_door]
         other_door = ''.join(other_door_in_list)
-        print('It is not ' + revealed_door + '.')
+        print('The host tells you it is not door ' + str(revealed_door) + '.')
         does_user_switch = input('Would you like to switch to ' + str(other_door) + '? Y/N    ' )
         if does_user_switch == 'Y':
             print('You have lost. Door ' + winner + ' was the correct choice.')
         elif does_user_switch == 'N':
             print ('Congratulations, you have won! Door ' + winner + ' was the winning door.')
         else:
-            sys.exit('Invalid answer...')
+            print('Invalid answer...')
+            input('press key to close program ')
+            sys.exit(0)
     if user_choice != winner:
         revealed_door_in_list = [door for door in list_without_user_choice if door != winner]
         revealed_door = ''.join(revealed_door_in_list)
-        print('It is not ' + str(revealed_door) + '.')
+        print('The host tells you it is not door ' + str(revealed_door) + '.')
         does_user_switch = input('Would you like to switch to ' + winner + '?  Y/N   ')
         if does_user_switch == 'Y':
             print('Congratulations, you have won! Door ' + winner + ' was the winning door.')
         elif does_user_switch == 'N':
             print ('You have lost. Door ' + winner + ' was the correct choice.')
         else:
-            sys.exit('Invalid answer...')
+            print('Invalid answer...')
+            input('press key to close program')
+            sys.exit(0)
     #Reads existing data in the file, so it doesnt reset every run.
     def data_reading():
         winning_and_losing_data = []
@@ -92,5 +97,6 @@ def monty_hall_simulated():
 if __name__ == '__main__':
      door_choice_1()
      monty_hall_simulated()
+     input('Press key to exit')
 
 #want to make this code restartable. Is work in progress.
