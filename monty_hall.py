@@ -11,9 +11,11 @@ door_A = 'A'
 door_B = 'B'
 door_C = 'C'
 door_list = [door_A, door_B, door_C]
+yeslist = ['Y', 'y', 'yes', 'YES', 'Yes']
+nolist = ['N', 'n', 'no', 'NO', 'No']
 #main() functions
 def main():
-    user_choice = input('Choose your door:   ') 
+    user_choice = input('Choose your door:   ')
     winner = random.choice(door_list) #calculates a random winning door
     list_without_user_choice = [door for door in door_list if door != user_choice] #needed for calculation
     door_list_without_winner = [door for door in door_list if door != winner] #needed for calculation
@@ -36,9 +38,9 @@ def main():
             print('The host tells you it is not door ' + str(revealed_door) + '.')
             time.sleep(2)
             does_user_switch = input('Would you like to switch to ' + str(other_door) + '? Y/N    ' )
-            if does_user_switch == 'Y':
+            if does_user_switch in yeslist:
                 print('You have lost. Door ' + winner + ' was the correct choice.')
-            elif does_user_switch == 'N':
+            elif does_user_switch in nolist:
                 print ('Congratulations, you have won! Door ' + winner + ' was the winning door.')
             else:
                 print('Invalid answer...')
@@ -51,9 +53,9 @@ def main():
             print('The host tells you it is not door ' + str(revealed_door) + '.')
             time.sleep(2)
             does_user_switch = input('Would you like to switch to ' + winner + '?  Y/N   ')
-            if does_user_switch == 'Y':
+            if does_user_switch in yeslist:
                 print('Congratulations, you have won! Door ' + winner + ' was the winning door.')
-            elif does_user_switch == 'N':
+            elif does_user_switch in nolist:
                 print ('You have lost. Door ' + winner + ' was the correct choice.')
             else:
                 print('Invalid answer...')
@@ -96,9 +98,9 @@ def main():
             datawriter.writerow(definite_data[0])
             datawriter.writerow(definite_data[-1])
     data_writer()
-#make code restartable for multiple runs at a time. 
+#make code restartable for multiple runs at a time.
     restart = input('Do you wish to restart? Y/N     ')
-    if restart == 'Y':
+    if restart in yeslist:
         main()
     else:
         time.sleep(5)
@@ -106,3 +108,4 @@ def main():
 #program run
 if __name__ == '__main__':
     main()
+
